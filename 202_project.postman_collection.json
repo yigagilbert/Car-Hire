@@ -1,0 +1,486 @@
+{
+	"info": {
+		"_postman_id": "2d03d30e-31d5-4897-b23d-f049a3cc4c2c",
+		"name": "202_project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Drivers",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"driverEmailId\":\"sita@ram.com\",\n\t\"driverPassword\":\"krutikablah\",\n    \"driverLicense\":\"YTH378\",\n    \"driverAddress\":\"334, River Oaks Lane, San Jose 95134\",\n    \"driverName\":\"Krutika Katelia\"\n}\n\n"
+				},
+				"url": {
+					"raw": "localhost:8080/api/drivers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"drivers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Locations",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"capacity\" : 12,\n\t\"city\" : \"Santa Clarita\",\n\t\"address\" : \"456 First Street LA 95000\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/locations",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post vehicle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"vehicleName\": \"MyCar5\",\n    \"vehicleType\": \"SMALL\",\n    \"vehicleBasePrice\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/vehicles/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"vehicles",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Driver login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"user1@carrental.com\",\n    \"password\":\"user1\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/authenticate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reservations",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pickup\":\"2020-04-15T22:08:56.000+0000\",\n    \"hours\": 10\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/reservation?driverEmailId=pav@bhaji.com&vehicle_id=7",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reservation"
+					],
+					"query": [
+						{
+							"key": "driverEmailId",
+							"value": "pav@bhaji.com"
+						},
+						{
+							"key": "vehicle_id",
+							"value": "7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pickup car",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZAYmhhamkuY29tIiwiZXhwIjoxNTg4MDkxMTU3LCJpYXQiOjE1ODgwNzMxNTd9.wnkQutsqgMiHBQdsPcr_vHt47xIz45o_yF82PJ-L0GY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/reservation/3/current",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reservation",
+						"3",
+						"current"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get reservations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/reservations",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reservations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Reservation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBjYXJyZW50YWwuY29tIiwiZXhwIjoxNTg4Njk2NTg2LCJpYXQiOjE1ODg2Nzg1ODZ9.uuFxaFcpYF-eERkGAR87C5syNbyoaRA7Bj-o6mpkmCc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/reservation/8/cancel",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reservation",
+						"8",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Driver cards",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrcnV0aWthYmxhaEBnbWFpbC5jb20iLCJleHAiOjE1ODc2Mjc2MDUsImlhdCI6MTU4NzYwOTYwNX0.pOtFekEK_voXcJ5I9QLI-qaxOzVkrExjWlVke8ljoiQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"driverCardNumber\": 4572923730,\n    \"driverCardCvv\": \"567\",\n    \"driverCardExpiry\": \"2018-12-12\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/drivers/krutikablah@gmail.com/cards",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"drivers",
+						"krutikablah@gmail.com",
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vehicles",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"vehicleName\": \"MyCar8\",\n    \"vehicleType\": \"SUV\",\n    \"status\": \"AVAILABLE\",\n    \"vehicleBasePrice\": 10,\n    \"time\" : \"GMT\",\n    \"vehicleReview\" : \"This is a nice vehicle\"\n}\n"
+				},
+				"url": {
+					"raw": "localhost:8080/api/vehicles",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get vehicles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/vehicles",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update MembershipFee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrcnV0aWthYmxhaEBnbWFpbC5jb20iLCJleHAiOjE1ODgwODA1NTgsImlhdCI6MTU4ODA2MjU1OH0.ITlkf3D70TLRwBvFmr7B2xoO_bPPcIUeZtBVjBf7HsI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/drivers/krutikablah@gmail.com/updateFee?memberShipFee=500",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"drivers",
+						"krutikablah@gmail.com",
+						"updateFee"
+					],
+					"query": [
+						{
+							"key": "memberShipFee",
+							"value": "500"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "End reservation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBjYXJyZW50YWwuY29tIiwiZXhwIjoxNTg4Njk2NTg2LCJpYXQiOjE1ODg2Nzg1ODZ9.uuFxaFcpYF-eERkGAR87C5syNbyoaRA7Bj-o6mpkmCc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/reservation/9/end",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reservation",
+						"9",
+						"end"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get reviews",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZAYmhhamkuY29tIiwiZXhwIjoxNTg4NDc1MjAwLCJpYXQiOjE1ODg0NTcyMDB9.pYGUpHsj6Bk5Dj3wr1LDp_Gn7FV22bTS_E1yfhtJ3u0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"reservation\": []\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/reviews",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Review",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"comment\" : \"The vehicle was in a nice condition but we drove in to the desert and soiled it\",\n\t\"rating\" : 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/reviews?reservation_id=12",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reviews"
+					],
+					"query": [
+						{
+							"key": "reservation_id",
+							"value": "12"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
